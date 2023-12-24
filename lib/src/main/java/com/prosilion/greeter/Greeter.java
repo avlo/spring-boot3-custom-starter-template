@@ -1,4 +1,4 @@
-package com.prosilion.greeter.library;
+package com.prosilion.greeter;
 
 import java.time.LocalDateTime;
 

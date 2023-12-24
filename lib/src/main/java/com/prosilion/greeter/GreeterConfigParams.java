@@ -1,4 +1,4 @@
-package com.prosilion.greeter.library;
+package com.prosilion.greeter;
 
 public class GreeterConfigParams {
   public static final String USER_NAME = "user.name";

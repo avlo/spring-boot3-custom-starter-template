@@ -1,8 +1,5 @@
-package com.prosilion.greeter.autoconfigure;
+package com.prosilion.greeter;
 
-import com.prosilion.greeter.library.Greeter;
-import com.prosilion.greeter.library.GreeterConfigParams;
-import com.prosilion.greeter.library.GreetingConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

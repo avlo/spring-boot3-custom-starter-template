@@ -1,6 +1,5 @@
-package com.prosilion.greeter.sample;
+package com.prosilion.greeter;
 
-import com.prosilion.greeter.library.Greeter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

@@ -1,4 +1,4 @@
-package com.prosilion.greeter.autoconfigure;
+package com.prosilion.greeter;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
