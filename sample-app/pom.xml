@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+									xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+		<modelVersion>4.0.0</modelVersion>
+		<groupId>com.prosilion</groupId>
+		<artifactId>sample-app</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<name>sample-app</name>
+
+		<parent>
+				<artifactId>spring-boot3-custom-starter-template</artifactId>
+				<groupId>com.prosilion</groupId>
+				<version>0.0.1-SNAPSHOT</version>
+				<relativePath>../../spring-boot3-custom-starter-template</relativePath>
+		</parent>
+
+		<properties>
+				<starter.version>0.0.1-SNAPSHOT</starter.version>
+		</properties>
+
+		<dependencyManagement>
+				<dependencies>
+						<dependency>
+								<groupId>org.springframework.boot</groupId>
+								<artifactId>spring-boot-dependencies</artifactId>
+								<version>${spring-boot.version}</version>
+								<type>pom</type>
+								<scope>import</scope>
+						</dependency>
+				</dependencies>
+		</dependencyManagement>
+
+		<dependencies>
+				<dependency>
+						<groupId>com.prosilion</groupId>
+						<artifactId>starter</artifactId>
+						<version>${starter.version}</version>
+				</dependency>
+		</dependencies>
+
+		<build>
+				<pluginManagement>
+						<plugins>
+								<plugin>
+										<groupId>org.springframework.boot</groupId>
+										<artifactId>spring-boot-maven-plugin</artifactId>
+										<version>${spring-boot.version}</version>
+								</plugin>
+						</plugins>
+				</pluginManagement>
+		</build>
+</project>

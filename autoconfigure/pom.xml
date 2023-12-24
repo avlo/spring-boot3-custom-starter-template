@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+									xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+									xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+		<modelVersion>4.0.0</modelVersion>
+		<groupId>com.prosilion</groupId>
+		<artifactId>autoconfigure</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<name>autoconfigure</name>
+
+		<properties>
+				<java.version>17</java.version>
+				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+				<lib.version>0.0.1-SNAPSHOT</lib.version>
+		</properties>
+
+		<parent>
+				<artifactId>spring-boot3-custom-starter-template</artifactId>
+				<groupId>com.prosilion</groupId>
+				<version>0.0.1-SNAPSHOT</version>
+				<relativePath>../../spring-boot3-custom-starter-template</relativePath>
+		</parent>
+
+		<dependencies>
+				<dependency>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot</artifactId>
+						<version>${spring-boot.version}</version>
+				</dependency>
+				<dependency>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-autoconfigure</artifactId>
+						<version>${spring-boot.version}</version>
+				</dependency>
+				<dependency>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-configuration-processor</artifactId>
+						<version>${spring-boot.version}</version>
+						<optional>true</optional>
+				</dependency>
+				<dependency>
+						<groupId>com.prosilion</groupId>
+						<artifactId>lib</artifactId>
+						<version>${lib.version}</version>
+						<optional>true</optional>
+				</dependency>
+				<dependency>
+						<groupId>org.projectlombok</groupId>
+						<artifactId>lombok</artifactId>
+				</dependency>
+		</dependencies>
+
+		<build>
+				<plugins>
+						<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-compiler-plugin</artifactId>
+								<version>${maven-compiler-plugin.version}</version>
+						</plugin>
+				</plugins>
+		</build>
+</project>
