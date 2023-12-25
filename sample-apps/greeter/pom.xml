@@ -1,52 +1,52 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.prosilion.sample-apps</groupId>
-	<artifactId>greeter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>sample-apps-greeter</name>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.prosilion.sample-apps</groupId>
+  <artifactId>greeter</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>sample-apps-greeter</name>
 
-	<parent>
-		<artifactId>spring-boot3-custom-starter-template</artifactId>
-		<groupId>com.prosilion</groupId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../../pom.xml</relativePath>
-	</parent>
+  <parent>
+    <artifactId>spring-boot3-custom-starter-template</artifactId>
+    <groupId>com.prosilion</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
 
-	<properties>
-		<starter.version>0.0.1-SNAPSHOT</starter.version>
-	</properties>
+  <properties>
+    <starter.version>0.0.1-SNAPSHOT</starter.version>
+  </properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${spring-boot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.prosilion.starter</groupId>
-			<artifactId>greeter</artifactId>
-			<version>${starter.version}</version>
-		</dependency>
-	</dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>com.prosilion.starter</groupId>
+      <artifactId>greeter</artifactId>
+      <version>${starter.version}</version>
+    </dependency>
+  </dependencies>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-					<version>${spring-boot.version}</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring-boot.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>

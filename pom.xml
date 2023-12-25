@@ -1,42 +1,42 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.prosilion</groupId>
-	<artifactId>spring-boot3-custom-starter-template</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot3-custom-starter-template</name>
-	<packaging>pom</packaging>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.prosilion</groupId>
+  <artifactId>spring-boot3-custom-starter-template</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>spring-boot3-custom-starter-template</name>
+  <packaging>pom</packaging>
 
-	<modules>
-		<module>lib/greeter</module>
-		<module>lib/h2db</module>
+  <modules>
+    <module>lib/greeter</module>
+    <module>lib/h2db</module>
 
-		<module>autoconfigure/greeter</module>
-		<module>autoconfigure/h2db</module>
+    <module>autoconfigure/greeter</module>
+    <module>autoconfigure/h2db</module>
 
-		<module>starter/greeter</module>
-		<module>starter/h2db</module>
+    <module>starter/greeter</module>
+    <module>starter/h2db</module>
 
-		<module>sample-apps/greeter</module>
-		<module>sample-apps/h2db</module>
-	</modules>
+    <module>sample-apps/greeter</module>
+    <module>sample-apps/h2db</module>
+  </modules>
 
-	<properties>
-		<java.version>17</java.version>
-		<spring-boot.version>3.2.1</spring-boot.version>
-		<maven-compiler-plugin.version>3.12.0</maven-compiler-plugin.version>
-		<lombok.version>1.18.28</lombok.version>
-	</properties>
+  <properties>
+    <java.version>17</java.version>
+    <spring-boot.version>3.2.1</spring-boot.version>
+    <maven-compiler-plugin.version>3.12.0</maven-compiler-plugin.version>
+    <lombok.version>1.18.28</lombok.version>
+  </properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok</artifactId>
-				<version>${lombok.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>
