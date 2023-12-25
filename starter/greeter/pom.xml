@@ -2,16 +2,16 @@
 									xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 		<modelVersion>4.0.0</modelVersion>
-		<groupId>com.prosilion</groupId>
-		<artifactId>starter</artifactId>
+		<groupId>com.prosilion.starter</groupId>
+		<artifactId>greeter</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<name>starter</name>
+		<name>starter-greeter</name>
 
 		<parent>
 				<artifactId>spring-boot3-custom-starter-template</artifactId>
 				<groupId>com.prosilion</groupId>
 				<version>0.0.1-SNAPSHOT</version>
-				<relativePath>../../spring-boot3-custom-starter-template</relativePath>
+				<relativePath>../../pom.xml</relativePath>
 		</parent>
 
 		<properties>

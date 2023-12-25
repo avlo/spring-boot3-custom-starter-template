@@ -12,7 +12,7 @@
 		<modules>
 				<module>lib/greeter</module>
 				<module>autoconfigure/greeter</module>
-				<module>starter</module>
+				<module>starter/greeter</module>
 				<module>sample-apps/greeter</module>
 		</modules>
 

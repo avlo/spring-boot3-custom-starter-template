@@ -32,8 +32,8 @@
 
 		<dependencies>
 				<dependency>
-						<groupId>com.prosilion</groupId>
-						<artifactId>starter</artifactId>
+						<groupId>com.prosilion.starter</groupId>
+						<artifactId>greeter</artifactId>
 						<version>${starter.version}</version>
 				</dependency>
 		</dependencies>
