@@ -6,7 +6,7 @@
 		<groupId>com.prosilion.autoconfigure</groupId>
 		<artifactId>greeter</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<name>greeter</name>
+		<name>autoconfigure-greeter</name>
 
 		<properties>
 				<java.version>17</java.version>
@@ -39,9 +39,9 @@
 						<optional>true</optional>
 				</dependency>
 				<dependency>
-						<groupId>com.prosilion</groupId>
-						<artifactId>lib</artifactId>
-						<version>${lib.version}</version>
+						<groupId>com.prosilion.lib</groupId>
+						<artifactId>greeter</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
 						<optional>true</optional>
 				</dependency>
 				<dependency>
