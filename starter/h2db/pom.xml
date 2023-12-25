@@ -3,9 +3,9 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.prosilion.starter</groupId>
-	<artifactId>greeter</artifactId>
+	<artifactId>h2db</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>starter-greeter</name>
+	<name>starter-h2db</name>
 
 	<parent>
 		<artifactId>spring-boot3-custom-starter-template</artifactId>
@@ -28,12 +28,12 @@
 		</dependency>
 		<dependency>
 			<groupId>com.prosilion.autoconfigure</groupId>
-			<artifactId>greeter</artifactId>
+			<artifactId>h2db</artifactId>
 			<version>${autoconfigure.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.prosilion.lib</groupId>
-			<artifactId>greeter</artifactId>
+			<artifactId>h2db</artifactId>
 			<version>${lib.version}</version>
 		</dependency>
 	</dependencies>
