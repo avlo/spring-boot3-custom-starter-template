@@ -26,8 +26,8 @@
 						<version>${spring-boot.version}</version>
 				</dependency>
 				<dependency>
-						<groupId>com.prosilion</groupId>
-						<artifactId>autoconfigure</artifactId>
+						<groupId>com.prosilion.autoconfigure</groupId>
+						<artifactId>greeter</artifactId>
 						<version>${project.version}</version>
 				</dependency>
 				<dependency>
