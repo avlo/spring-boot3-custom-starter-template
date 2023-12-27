@@ -47,23 +47,16 @@ public class H2DatabaseAutoConfiguration {
   @Bean
   @ConditionalOnMissingBean
   public H2DatabaseConfig h2DatabaseConfig() {
-    String url = go(dbProps.getUrl(), DEFAULT_DB);
-    String classname = go(dbProps.getDriverClassName(), DEFAULT_DRIVER_CLASSNAME);
-    String username = go(dbProps.getUsername(), DEFAULT_USERNAME);
-    String password = go(dbProps.getPassword(), DEFAULT_PASSWORD);
-
     H2DatabaseConfig h2DatabaseConfig = new H2DatabaseConfig();
-    h2DatabaseConfig.put(H2DatabaseConfigParams.URL, url);
-    h2DatabaseConfig.put(H2DatabaseConfigParams.DRIVER_CLASSNAME, classname);
-    h2DatabaseConfig.put(H2DatabaseConfigParams.USERNAME, username);
-    h2DatabaseConfig.put(H2DatabaseConfigParams.PASSWORD, password);
+    h2DatabaseConfig.put(H2DatabaseConfigParams.URL, go(dbProps.getUrl(), DEFAULT_DB));
+    h2DatabaseConfig.put(H2DatabaseConfigParams.DRIVER_CLASSNAME, go(dbProps.getDriverClassName(), DEFAULT_DRIVER_CLASSNAME));
+    h2DatabaseConfig.put(H2DatabaseConfigParams.USERNAME, go(dbProps.getUsername(), DEFAULT_USERNAME));
+    h2DatabaseConfig.put(H2DatabaseConfigParams.PASSWORD, go(dbProps.getPassword(), DEFAULT_PASSWORD));
     return h2DatabaseConfig;
   }
 
   private String go(String a, String b) {
-    String ret = StringUtils.isBlank(a) ? b : a;
-    System.out.println(ret);
-    return ret;
+    return StringUtils.isBlank(a) ? b : a;
   }
 
   @Bean
