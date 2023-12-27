@@ -1,4 +1,4 @@
-package com.prosilion.h2;
+package edu.mayo.lpea.cad.cadence3;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;
 

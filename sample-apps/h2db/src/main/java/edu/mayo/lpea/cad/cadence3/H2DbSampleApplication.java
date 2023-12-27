@@ -1,10 +1,9 @@
-package com.prosilion.h2;
+package edu.mayo.lpea.cad.cadence3;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import com.prosilion.h2.H2Database;
 
 import javax.sql.DataSource;
 

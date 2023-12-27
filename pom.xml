@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.prosilion</groupId>
-  <artifactId>spring-boot3-custom-starter-template</artifactId>
+  <groupId>edu.mayo.lpea.cad.cadence3</groupId>
+  <artifactId>parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>spring-boot3-custom-starter-template</name>
+  <name>cadence3-parent</name>
   <packaging>pom</packaging>
 
   <modules>

@@ -1,4 +1,4 @@
-package com.prosilion.h2;
+package edu.mayo.lpea.cad.cadence3;
 
 public class H2DatabaseConfigParams {
   public static final String URL = "url";
