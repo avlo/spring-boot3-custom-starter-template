@@ -1,0 +1,17 @@
+                                                  dddddddd
+        CCCCCCCCCCCCC                             d::::::d                                                                             333333333333333   
+     CCC::::::::::::C                             d::::::d                                                                            3:::::::::::::::33 
+   CC:::::::::::::::C                             d::::::d                                                                            3::::::33333::::::3
+  C:::::CCCCCCCC::::C                             d:::::d                                                                             3333333     3:::::3
+ C:::::C       CCCCCC  aaaaaaaaaaaaa      ddddddddd:::::d     eeeeeeeeeeee    nnnn  nnnnnnnn        cccccccccccccccc    eeeeeeeeeeee              3:::::3
+C:::::C                a::::::::::::a   dd::::::::::::::d   ee::::::::::::ee  n:::nn::::::::nn    cc:::::::::::::::c  ee::::::::::::ee            3:::::3
+C:::::C                aaaaaaaaa:::::a d::::::::::::::::d  e::::::eeeee:::::een::::::::::::::nn  c:::::::::::::::::c e::::::eeeee:::::ee  33333333:::::3 
+C:::::C                         a::::ad:::::::ddddd:::::d e::::::e     e:::::enn:::::::::::::::nc:::::::cccccc:::::ce::::::e     e:::::e  3:::::::::::3  
+C:::::C                  aaaaaaa:::::ad::::::d    d:::::d e:::::::eeeee::::::e  n:::::nnnn:::::nc::::::c     ccccccce:::::::eeeee::::::e  33333333:::::3 
+C:::::C                aa::::::::::::ad:::::d     d:::::d e:::::::::::::::::e   n::::n    n::::nc:::::c             e:::::::::::::::::e           3:::::3
+C:::::C               a::::aaaa::::::ad:::::d     d:::::d e::::::eeeeeeeeeee    n::::n    n::::nc:::::c             e::::::eeeeeeeeeee            3:::::3
+ C:::::C       CCCCCCa::::a    a:::::ad:::::d     d:::::d e:::::::e             n::::n    n::::nc::::::c     ccccccce:::::::e                     3:::::3
+  C:::::CCCCCCCC::::Ca::::a    a:::::ad::::::ddddd::::::dde::::::::e            n::::n    n::::nc:::::::cccccc:::::ce::::::::e        3333333     3:::::3
+   CC:::::::::::::::Ca:::::aaaa::::::a d:::::::::::::::::d e::::::::eeeeeeee    n::::n    n::::n c:::::::::::::::::c e::::::::eeeeeeee3::::::33333::::::3
+     CCC::::::::::::C a::::::::::aa:::a d:::::::::ddd::::d  ee:::::::::::::e    n::::n    n::::n  cc:::::::::::::::c  ee:::::::::::::e3:::::::::::::::33 
+        CCCCCCCCCCCCC  aaaaaaaaaa  aaaa  ddddddddd   ddddd    eeeeeeeeeeeeee    nnnnnn    nnnnnn    cccccccccccccccc    eeeeeeeeeeeeee 333333333333333   
