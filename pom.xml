@@ -10,16 +10,12 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>lib/greeter</module>
     <module>lib/h2db</module>
 
-    <module>autoconfigure/greeter</module>
     <module>autoconfigure/h2db</module>
 
-    <module>starter/greeter</module>
     <module>starter/h2db</module>
 
-    <module>sample-apps/greeter</module>
     <module>sample-apps/h2db</module>
   </modules>
 
