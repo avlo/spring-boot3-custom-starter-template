@@ -19,5 +19,6 @@ public class H2DbSampleApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
     DataSource dataSource = h2Database.getDataSource();
+    System.out.println(String.format("####################### [%s] #####################", dataSource.getConnection()));
   }
 }
