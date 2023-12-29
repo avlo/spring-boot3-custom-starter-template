@@ -12,15 +12,19 @@
   <modules>
     <module>lib/h2db</module>
     <module>lib/core</module>
+    <module>lib/web</module>
 
     <module>autoconfigure/h2db</module>
     <module>autoconfigure/core</module>
+    <module>autoconfigure/web</module>
 
     <module>starter/h2db</module>
     <module>starter/core</module>
+    <module>starter/web</module>
 
     <module>sample-apps/h2db</module>
     <module>sample-apps/core</module>
+    <module>sample-apps/web</module>
   </modules>
 
   <properties>
