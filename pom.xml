@@ -11,12 +11,16 @@
 
   <modules>
     <module>lib/h2db</module>
+    <module>lib/core</module>
 
     <module>autoconfigure/h2db</module>
+    <module>autoconfigure/core</module>
 
     <module>starter/h2db</module>
+    <module>starter/core</module>
 
     <module>sample-apps/h2db</module>
+    <module>sample-apps/core</module>
   </modules>
 
   <properties>
