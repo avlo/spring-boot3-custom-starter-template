@@ -1,6 +1,8 @@
 package edu.mayo.lpea.cad.cadence3;
 
-import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 
 import javax.sql.DataSource;
 
@@ -21,11 +23,18 @@ public class H2Database {
   }
 
   public DataSource getDataSource() {
-    DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-    dataSourceBuilder.url(h2DatabaseConfig.getProperty(H2DatabaseConfigParams.URL));
-    dataSourceBuilder.driverClassName(h2DatabaseConfig.getProperty(H2DatabaseConfigParams.DRIVER_CLASSNAME));
-    dataSourceBuilder.username(h2DatabaseConfig.getProperty(H2DatabaseConfigParams.USERNAME));
-    dataSourceBuilder.password(h2DatabaseConfig.getProperty(H2DatabaseConfigParams.PASSWORD));
-    return dataSourceBuilder.build();
+    return new EmbeddedDatabaseBuilder()
+               .setType(EmbeddedDatabaseType.H2)
+               .addScript(JdbcDaoImpl.DEFAULT_USER_SCHEMA_DDL_LOCATION)
+               .build();
   }
+
+//  public DataSource getDataSource() {
+//    DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+//    dataSourceBuilder.url(h2DatabaseConfig.getProperty(H2DatabaseConfigParams.URL));
+//    dataSourceBuilder.driverClassName(h2DatabaseConfig.getProperty(H2DatabaseConfigParams.DRIVER_CLASSNAME));
+//    dataSourceBuilder.username(h2DatabaseConfig.getProperty(H2DatabaseConfigParams.USERNAME));
+//    dataSourceBuilder.password(h2DatabaseConfig.getProperty(H2DatabaseConfigParams.PASSWORD));
+//    return dataSourceBuilder.build();
+//  }
 }

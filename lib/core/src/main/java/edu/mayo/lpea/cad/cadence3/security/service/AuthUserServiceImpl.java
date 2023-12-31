@@ -10,7 +10,6 @@ import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.text.MessageFormat;
 import java.util.Collection;
@@ -37,7 +36,7 @@ public class AuthUserServiceImpl implements AuthUserService {
     return authUserDetailsService.userExists(userName);
   }
 
-  @Transactional
+  //  @Transactional
   @Override
   public AppUserAuthUser createUser(@NonNull String username, @NonNull String password) throws PreExistingUserException {
     if (userExists(username)) {

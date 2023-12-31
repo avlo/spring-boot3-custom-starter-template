@@ -2,13 +2,15 @@ package edu.mayo.lpea.cad.cadence3;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
+import javax.sql.DataSource;
+
+@AutoConfiguration
 @ConditionalOnClass(H2Database.class)
 
 /**
@@ -64,4 +66,10 @@ public class H2DatabaseAutoConfiguration {
   public H2Database h2Database(H2DatabaseConfig h2DatabaseConfig) {
     return new H2Database(h2DatabaseConfig);
   }
+
+  @Bean
+  DataSource getDataSource(H2Database h2Database) {
+    return h2Database.getDataSource();
+  }
+
 }

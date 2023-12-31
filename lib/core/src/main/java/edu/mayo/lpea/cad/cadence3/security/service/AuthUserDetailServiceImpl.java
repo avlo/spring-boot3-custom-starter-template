@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.text.MessageFormat;
@@ -26,7 +25,7 @@ public class AuthUserDetailServiceImpl extends JdbcUserDetailsManager implements
     this.passwordEncoder = passwordEncoder;
   }
 
-  @Transactional
+  //  @Transactional
   @Override
   public AuthUserDetails createAuthUser(String username, String password) throws PreExistingUserException {
     createUser(new AuthUserDetailsImpl(createAuthUser(username, password, CANONICAL_ROLE)));

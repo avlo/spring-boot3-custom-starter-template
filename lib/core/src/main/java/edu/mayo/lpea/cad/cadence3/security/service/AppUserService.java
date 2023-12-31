@@ -6,7 +6,6 @@ import edu.mayo.lpea.cad.cadence3.security.repository.AppUserRepository;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 
@@ -27,7 +26,7 @@ public class AppUserService {
     return Objects.isNull(appUser.getId()) ? appUser : findById(appUser.getId());
   }
 
-  @Transactional
+  //  @Transactional
   public CustomizableAppUser<AppUser> save(@NonNull CustomizableAppUser<? extends AppUser> appUser) {
     CustomizableAppUser<AppUser> appUserToSave = findByAppUser(appUser.getInstantiatedCustomAppUserType());
     return Objects.isNull(appUserToSave.getId()) ? appUserRepository.save(appUserToSave.getInstantiatedCustomAppUserType()) : appUserToSave.getInstantiatedCustomAppUserType();
