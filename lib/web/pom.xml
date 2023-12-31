@@ -21,13 +21,8 @@
     </dependency>
     <dependency>
       <groupId>edu.mayo.lpea.cad.cadence3.starter</groupId>
-      <artifactId>h2db</artifactId>
-      <version>${parent.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>edu.mayo.lpea.cad.cadence3.starter</groupId>
       <artifactId>core</artifactId>
-      <version>${parent.version}</version>
+      <version>${project.parent.version}</version>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>

@@ -15,7 +15,7 @@
   </parent>
 
   <properties>
-    <starter.version>${parent.version}</starter.version>
+    <starter.version>${project.parent.version}</starter.version>
   </properties>
 
   <dependencyManagement>
