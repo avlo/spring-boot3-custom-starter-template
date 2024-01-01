@@ -1,5 +1,7 @@
 package edu.mayo.lpea.cad.cadence3;
 
+import edu.mayo.lpea.cad.cadence3.ldap.service.LdapUserLocalAuthorities;
+import edu.mayo.lpea.cad.cadence3.ldap.service.PostBindSuccessHandler;
 import edu.mayo.lpea.cad.cadence3.security.AppUserLocalAuthorities;
 import edu.mayo.lpea.cad.cadence3.security.service.AuthUserService;
 import edu.mayo.lpea.cad.cadence3.web.service.AppUserDtoService;
@@ -12,6 +14,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.ldap.filter.AndFilter;
 import org.springframework.ldap.filter.EqualsFilter;
@@ -22,7 +25,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 
 @AutoConfiguration
-@ConditionalOnClass(value = {org.springframework.ldap.core.LdapTemplate.class})
+@ConditionalOnClass(LdapTemplate.class)
 public class LdapSecurityConfig {
   private static final Logger LOGGER = LoggerFactory.getLogger(LdapSecurityConfig.class);
   public static final String OBJECT_CLASS = "objectClass";
@@ -55,12 +58,12 @@ public class LdapSecurityConfig {
   }
 
   @Bean
-  edu.mayo.lpea.cad.cadence3.ldap.service.LdapUserLocalAuthorities ldapUserLocalAuthorities(AppUserLocalAuthorities appUserLocalAuthorities) {
+  LdapUserLocalAuthorities ldapUserLocalAuthorities(AppUserLocalAuthorities appUserLocalAuthorities) {
     return new edu.mayo.lpea.cad.cadence3.ldap.service.LdapUserLocalAuthorities(appUserLocalAuthorities);
   }
 
   @Bean
-  edu.mayo.lpea.cad.cadence3.ldap.service.PostBindSuccessHandler postBindSuccessHandler(LdapContextSource ldapContextSource, AuthUserService authUserService) {
+  PostBindSuccessHandler postBindSuccessHandler(LdapContextSource ldapContextSource, AuthUserService authUserService) {
     LOGGER.info("Loading LDAP - User Search (FilterBasedLdapUserSearch implements LdapUserSearch)");
     return new edu.mayo.lpea.cad.cadence3.ldap.service.PostBindSuccessHandler(ldapSearchBase, getAndFilter(), ldapContextSource, authUserService);
   }
