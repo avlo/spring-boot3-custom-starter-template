@@ -3,7 +3,6 @@ package edu.mayo.lpea.cad.cadence3.jpa.controller;
 import edu.mayo.lpea.cad.cadence3.security.PreExistingUserException;
 import edu.mayo.lpea.cad.cadence3.security.entity.AppUserAuthUser;
 import edu.mayo.lpea.cad.cadence3.security.service.AuthUserService;
-import edu.mayo.lpea.cad.cadence3.security.service.AuthUserServiceImpl;
 import edu.mayo.lpea.cad.cadence3.web.model.AppUserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +20,7 @@ public class JpaAuthController {
 	private final AuthUserService authUserService;
 
 	@Autowired
-	public JpaAuthController(AuthUserServiceImpl authUserService) {
+	public JpaAuthController(AuthUserService authUserService) {
 		this.authUserService = authUserService;
 	}
 

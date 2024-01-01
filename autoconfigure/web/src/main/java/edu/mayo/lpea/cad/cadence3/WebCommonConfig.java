@@ -13,8 +13,7 @@ public class WebCommonConfig {
   private static final Logger LOGGER = LoggerFactory.getLogger(WebCommonConfig.class);
 
   @Bean("mvc")
-//  @ConditionalOnMissingBean
-  Builder mvc() {
+  public Builder mvc() {
     LOGGER.info("WebCommonConfig mvc() called, MvcRequestMatcher.Builder created...");
     return new MvcRequestMatcher.Builder(new HandlerMappingIntrospector());
   }

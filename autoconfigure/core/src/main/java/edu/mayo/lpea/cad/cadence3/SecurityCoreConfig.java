@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -35,20 +36,22 @@ public class SecurityCoreConfig {
 	}
 
 	@Bean
-	WebSecurityCustomizer webSecurityCustomizer() {
+	public WebSecurityCustomizer webSecurityCustomizer() {
 		LOGGER.info("DB - H2 Console active at /h2-console/");
 		return web -> web.ignoring().requestMatchers(PathRequest.toH2Console());
 	}
 
 	@Bean
 //	@ConditionalOnMissingBean(name = {"azureAuthUserDetailsService"}) // check for azure variation
-	AuthUserDetailsService authUserDetailsService(DataSource dataSource, PasswordEncoder passwordEncoder) {
+	@ConditionalOnMissingBean
+	public AuthUserDetailsService authUserDetailsService(DataSource dataSource, PasswordEncoder passwordEncoder) {
 		return new AuthUserDetailServiceImpl(dataSource, passwordEncoder);
 	}
 
 	@Bean
 //	@ConditionalOnMissingBean(name = {"azureAuthUserService"}) // check for azure variation
-	AuthUserService authUserService(
+	@ConditionalOnMissingBean
+	public AuthUserService authUserService(
 			CustomizableAppUserService customizableAppUserService,
 			AuthUserDetailsService authUserDetailService,
 			AppUserService appUserService,
@@ -57,7 +60,7 @@ public class SecurityCoreConfig {
 	}
 
 	@Bean
-	AppUserLocalAuthorities appUserLocalAuthorities(AuthUserService authUserService) {
+	public AppUserLocalAuthorities appUserLocalAuthorities(AuthUserService authUserService) {
 		return new AppUserLocalAuthorities(authUserService);
 	}
 }
