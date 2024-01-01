@@ -17,7 +17,7 @@ public class ExampleJpaUserConfig {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ExampleJpaUserConfig.class);
 
 	@Bean
-	CustomizableAppUserService customizableAppUserService() {
+	public CustomizableAppUserService customizableAppUserService() {
 		LOGGER.info("EXAMPLE USER CONFIG - Creating ExampleJpaUser");
 		return new CustomizableAppUserService(new ExampleJpaUser());
 	}

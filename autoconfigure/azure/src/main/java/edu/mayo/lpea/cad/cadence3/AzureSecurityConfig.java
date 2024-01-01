@@ -81,12 +81,12 @@ public class AzureSecurityConfig {
 	}
 
 	@Bean
-	AuthUserDetailsService authUserDetailsService(DataSource dataSource, PasswordEncoder passwordEncoder) {
+	public AuthUserDetailsService authUserDetailsService(DataSource dataSource, PasswordEncoder passwordEncoder) {
 		return new AzureUserDetailServiceImpl(new AuthUserDetailServiceImpl(dataSource, passwordEncoder));
 	}
 
 	@Bean
-	AzureUserLocalAuthorities azureUserLocalAuthorities(AppUserLocalAuthorities appUserLocalAuthorities) {
+	public AzureUserLocalAuthorities azureUserLocalAuthorities(AppUserLocalAuthorities appUserLocalAuthorities) {
 		return new AzureUserLocalAuthorities(appUserLocalAuthorities);
 	}
 }

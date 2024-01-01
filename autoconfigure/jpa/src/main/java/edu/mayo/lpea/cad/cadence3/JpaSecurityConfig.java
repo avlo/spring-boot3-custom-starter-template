@@ -6,8 +6,9 @@ import edu.mayo.lpea.cad.cadence3.web.service.AppUserDtoServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.web.servlet.ConditionalOnMissingFilterBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -19,8 +20,8 @@ public class JpaSecurityConfig {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JpaSecurityConfig.class);
 
 	@Bean
-//	@ConditionalOnBean(name = "mvc")
-//	@ConditionalOnMissingBean
+	@DependsOn("mvc")
+	@ConditionalOnMissingFilterBean
 	public SecurityFilterChain filterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
 		LOGGER.info("Loading JPA - Endpoint authorization configuration");
 		http.authorizeHttpRequests(authorize -> authorize
@@ -42,7 +43,7 @@ public class JpaSecurityConfig {
 	}
 
 	@Bean
-	AppUserDtoService appUserDtoService(AuthUserService authUserService) {
+	public AppUserDtoService appUserDtoService(AuthUserService authUserService) {
 		return new AppUserDtoServiceImpl(authUserService);
 	}
 }

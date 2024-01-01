@@ -35,20 +35,20 @@ public class SecurityCoreConfig {
 	}
 
 	@Bean
-	WebSecurityCustomizer webSecurityCustomizer() {
+	public WebSecurityCustomizer webSecurityCustomizer() {
 		LOGGER.info("DB - H2 Console active at /h2-console/");
 		return web -> web.ignoring().requestMatchers(PathRequest.toH2Console());
 	}
 
 	@Bean
 //	@ConditionalOnMissingBean(name = {"azureAuthUserDetailsService"}) // check for azure variation
-	AuthUserDetailsService authUserDetailsService(DataSource dataSource, PasswordEncoder passwordEncoder) {
+	public AuthUserDetailsService authUserDetailsService(DataSource dataSource, PasswordEncoder passwordEncoder) {
 		return new AuthUserDetailServiceImpl(dataSource, passwordEncoder);
 	}
 
 	@Bean
 //	@ConditionalOnMissingBean(name = {"azureAuthUserService"}) // check for azure variation
-	AuthUserService authUserService(
+	public AuthUserService authUserService(
 			CustomizableAppUserService customizableAppUserService,
 			AuthUserDetailsService authUserDetailService,
 			AppUserService appUserService,
@@ -57,7 +57,7 @@ public class SecurityCoreConfig {
 	}
 
 	@Bean
-	AppUserLocalAuthorities appUserLocalAuthorities(AuthUserService authUserService) {
+	public AppUserLocalAuthorities appUserLocalAuthorities(AuthUserService authUserService) {
 		return new AppUserLocalAuthorities(authUserService);
 	}
 }

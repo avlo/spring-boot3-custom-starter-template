@@ -68,8 +68,7 @@ public class H2DatabaseAutoConfiguration {
   }
 
   @Bean
-  DataSource getDataSource(H2Database h2Database) {
+  public DataSource getDataSource(H2Database h2Database) {
     return h2Database.getDataSource();
   }
-
 }

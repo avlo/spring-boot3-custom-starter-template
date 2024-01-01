@@ -4,16 +4,14 @@ import edu.mayo.lpea.cad.cadence3.ldap.service.LdapUserLocalAuthorities;
 import edu.mayo.lpea.cad.cadence3.ldap.service.PostBindSuccessHandler;
 import edu.mayo.lpea.cad.cadence3.security.AppUserLocalAuthorities;
 import edu.mayo.lpea.cad.cadence3.security.service.AuthUserService;
-import edu.mayo.lpea.cad.cadence3.web.service.AppUserDtoService;
-import edu.mayo.lpea.cad.cadence3.web.service.AppUserDtoServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.ldap.filter.AndFilter;
@@ -26,6 +24,7 @@ import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 
 @AutoConfiguration
 @ConditionalOnClass(LdapTemplate.class)
+@AutoConfigureBefore(JpaSecurityConfig.class)
 public class LdapSecurityConfig {
   private static final Logger LOGGER = LoggerFactory.getLogger(LdapSecurityConfig.class);
   public static final String OBJECT_CLASS = "objectClass";
@@ -37,8 +36,7 @@ public class LdapSecurityConfig {
   private String ldapSearchBase;
 
   @Bean
-  @ConditionalOnBean(name = "mvc")
-  @ConditionalOnMissingBean
+  @DependsOn("mvc")
   public SecurityFilterChain filterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
     LOGGER.info("Loading LDAP - Endpoint authorization configuration");
     http.authorizeHttpRequests(authorize -> authorize
@@ -58,18 +56,18 @@ public class LdapSecurityConfig {
   }
 
   @Bean
-  LdapUserLocalAuthorities ldapUserLocalAuthorities(AppUserLocalAuthorities appUserLocalAuthorities) {
+  public LdapUserLocalAuthorities ldapUserLocalAuthorities(AppUserLocalAuthorities appUserLocalAuthorities) {
     return new edu.mayo.lpea.cad.cadence3.ldap.service.LdapUserLocalAuthorities(appUserLocalAuthorities);
   }
 
   @Bean
-  PostBindSuccessHandler postBindSuccessHandler(LdapContextSource ldapContextSource, AuthUserService authUserService) {
+  public PostBindSuccessHandler postBindSuccessHandler(LdapContextSource ldapContextSource, AuthUserService authUserService) {
     LOGGER.info("Loading LDAP - User Search (FilterBasedLdapUserSearch implements LdapUserSearch)");
     return new edu.mayo.lpea.cad.cadence3.ldap.service.PostBindSuccessHandler(ldapSearchBase, getAndFilter(), ldapContextSource, authUserService);
   }
 
   @Bean
-  BindAuthenticator bindAuthenticator(LdapContextSource ldapContextSource, edu.mayo.lpea.cad.cadence3.ldap.service.PostBindSuccessHandler postBindSuccessHandler) {
+  public BindAuthenticator bindAuthenticator(LdapContextSource ldapContextSource, edu.mayo.lpea.cad.cadence3.ldap.service.PostBindSuccessHandler postBindSuccessHandler) {
     LOGGER.info("Loading LDAP - Authenticator (BindAuthenticator extends AbstractLdapAuthenticator implements LdapAuthenticator)");
     BindAuthenticator authenticator = new BindAuthenticator(ldapContextSource);
     authenticator.setUserSearch(postBindSuccessHandler);
@@ -78,15 +76,9 @@ public class LdapSecurityConfig {
   }
 
   @Bean
-  LdapAuthenticationProvider ldapAuthenticationProvider(BindAuthenticator bindAuthenticator, edu.mayo.lpea.cad.cadence3.ldap.service.LdapUserLocalAuthorities ldapUserLocalAuthorities) {
+  public LdapAuthenticationProvider ldapAuthenticationProvider(BindAuthenticator bindAuthenticator, edu.mayo.lpea.cad.cadence3.ldap.service.LdapUserLocalAuthorities ldapUserLocalAuthorities) {
     LOGGER.info("Loading LDAP - Authentication Provider (LdapAuthenticationProvider)");
     return new LdapAuthenticationProvider(bindAuthenticator, ldapUserLocalAuthorities);
-  }
-
-  @Bean
-  @ConditionalOnMissingBean
-  AppUserDtoService appUserDtoService(AuthUserService authUserService) {
-    return new AppUserDtoServiceImpl(authUserService);
   }
 
   private static String getAndFilter() {
