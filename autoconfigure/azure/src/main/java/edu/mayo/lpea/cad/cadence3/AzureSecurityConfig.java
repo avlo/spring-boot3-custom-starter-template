@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
@@ -35,7 +36,7 @@ import javax.sql.DataSource;
 		HibernateJpaAutoConfiguration.class,
 		DataSourceTransactionManagerAutoConfiguration.class })
 @AutoConfigureBefore({JpaSecurityConfig.class, SecurityCoreConfig.class})
-//@EntityScan(basePackages = "edu.mayo.lpea.cad.cadence3.azure.entity")
+@EntityScan(basePackages = "edu.mayo.lpea.cad.cadence3.azure.entity")
 public class AzureSecurityConfig {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AzureSecurityConfig.class);
 
