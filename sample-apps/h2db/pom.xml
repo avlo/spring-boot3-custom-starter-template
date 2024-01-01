@@ -2,20 +2,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.prosilion.sample-apps</groupId>
+  <groupId>edu.mayo.lpea.cad.cadence3.sample-apps</groupId>
   <artifactId>h2db</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>sample-apps-h2db</name>
 
   <parent>
-    <artifactId>spring-boot3-custom-starter-template</artifactId>
-    <groupId>com.prosilion</groupId>
+    <groupId>edu.mayo.lpea.cad.cadence3</groupId>
+    <artifactId>parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
   <properties>
-    <starter.version>${parent.version}</starter.version>
+    <starter.version>${project.parent.version}</starter.version>
   </properties>
 
   <dependencyManagement>
@@ -32,7 +32,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.prosilion.starter</groupId>
+      <groupId>edu.mayo.lpea.cad.cadence3.starter</groupId>
       <artifactId>h2db</artifactId>
       <version>${starter.version}</version>
     </dependency>

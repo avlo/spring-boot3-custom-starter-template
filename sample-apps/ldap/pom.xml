@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>edu.mayo.lpea.cad.cadence3.sample-apps</groupId>
+  <artifactId>ldap</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>sample-apps-ldap</name>
+
+  <parent>
+    <groupId>edu.mayo.lpea.cad.cadence3</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+
+  <properties>
+    <starter.version>${project.parent.version}</starter.version>
+  </properties>
+
+  <!--  <dependencyManagement>-->
+  <!--    <dependencies>-->
+  <!--      <dependency>-->
+  <!--        <groupId>org.springframework.boot</groupId>-->
+  <!--        <artifactId>spring-boot-dependencies</artifactId>-->
+  <!--        <version>${spring-boot.version}</version>-->
+  <!--        <type>pom</type>-->
+  <!--        <scope>import</scope>-->
+  <!--      </dependency>-->
+  <!--    </dependencies>-->
+  <!--  </dependencyManagement>-->
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+      <version>${spring-boot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <version>${spring-boot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+      <version>${spring-boot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>${spring-boot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <version>${spring-boot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>edu.mayo.lpea.cad.cadence3.starter</groupId>
+      <artifactId>h2db</artifactId>
+      <version>${starter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>edu.mayo.lpea.cad.cadence3.starter</groupId>
+      <artifactId>core</artifactId>
+      <version>${starter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>edu.mayo.lpea.cad.cadence3.starter</groupId>
+      <artifactId>web</artifactId>
+      <version>${starter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>edu.mayo.lpea.cad.cadence3.starter</groupId>
+      <artifactId>jpa</artifactId>
+      <version>${starter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>edu.mayo.lpea.cad.cadence3.starter</groupId>
+      <artifactId>ldap</artifactId>
+      <version>${starter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+      <version>${spring-boot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.thymeleaf.extras</groupId>
+      <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+      <version>3.1.2.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>2.2.222</version>
+    </dependency>
+    <dependency>
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
+      <version>2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>1.9.4</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring-boot.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

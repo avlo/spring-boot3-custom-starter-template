@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.prosilion.autoconfigure</groupId>
+  <groupId>edu.mayo.lpea.cad.cadence3.autoconfigure</groupId>
   <artifactId>h2db</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>autoconfigure-h2db</name>
@@ -15,8 +15,8 @@
   </properties>
 
   <parent>
-    <artifactId>spring-boot3-custom-starter-template</artifactId>
-    <groupId>com.prosilion</groupId>
+    <groupId>edu.mayo.lpea.cad.cadence3</groupId>
+    <artifactId>parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
@@ -39,9 +39,9 @@
       <optional>true</optional>
     </dependency>
     <dependency>
-      <groupId>com.prosilion.lib</groupId>
+      <groupId>edu.mayo.lpea.cad.cadence3.lib</groupId>
       <artifactId>h2db</artifactId>
-      <version>${parent.version}</version>
+      <version>${project.parent.version}</version>
       <optional>true</optional>
     </dependency>
     <dependency>
