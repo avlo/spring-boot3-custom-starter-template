@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -42,12 +43,14 @@ public class SecurityCoreConfig {
 
 	@Bean
 //	@ConditionalOnMissingBean(name = {"azureAuthUserDetailsService"}) // check for azure variation
+	@ConditionalOnMissingBean
 	public AuthUserDetailsService authUserDetailsService(DataSource dataSource, PasswordEncoder passwordEncoder) {
 		return new AuthUserDetailServiceImpl(dataSource, passwordEncoder);
 	}
 
 	@Bean
 //	@ConditionalOnMissingBean(name = {"azureAuthUserService"}) // check for azure variation
+	@ConditionalOnMissingBean
 	public AuthUserService authUserService(
 			CustomizableAppUserService customizableAppUserService,
 			AuthUserDetailsService authUserDetailService,

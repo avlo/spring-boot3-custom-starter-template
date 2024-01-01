@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
@@ -68,6 +69,7 @@ public class H2DatabaseAutoConfiguration {
   }
 
   @Bean
+  @Primary
   public DataSource getDataSource(H2Database h2Database) {
     return h2Database.getDataSource();
   }

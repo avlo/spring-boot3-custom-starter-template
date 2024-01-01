@@ -10,17 +10,17 @@ import edu.mayo.lpea.cad.cadence3.security.service.AuthUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
@@ -28,13 +28,13 @@ import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import javax.sql.DataSource;
 
 @AutoConfiguration
-@EnableWebSecurity
 @EnableMethodSecurity
 @ConditionalOnClass(AadWebApplicationHttpSecurityConfigurer.class)
 @Import({
 		DataSourceAutoConfiguration.class,
 		HibernateJpaAutoConfiguration.class,
 		DataSourceTransactionManagerAutoConfiguration.class })
+@AutoConfigureBefore({JpaSecurityConfig.class, SecurityCoreConfig.class})
 //@EntityScan(basePackages = "edu.mayo.lpea.cad.cadence3.azure.entity")
 public class AzureSecurityConfig {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AzureSecurityConfig.class);
@@ -52,9 +52,14 @@ public class AzureSecurityConfig {
 	}
 
 	@Bean
-	@Primary
-	@ConditionalOnBean(name = "mvc")
-	public SecurityFilterChain azureFilterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc, AzureUserLocalAuthorities azureUserLocalAuthorities, AzureAuthUserServiceImpl azureAuthUserServiceImpl,  AadWebApplicationHttpSecurityConfigurer aadWebApplicationHttpSecurityConfigurer) throws Exception {
+	@DependsOn("mvc")
+	public SecurityFilterChain filterChain(
+			HttpSecurity http,
+			MvcRequestMatcher.Builder mvc,
+			AzureUserLocalAuthorities azureUserLocalAuthorities,
+			AzureAuthUserServiceImpl azureAuthUserServiceImpl,
+			AadWebApplicationHttpSecurityConfigurer aadWebApplicationHttpSecurityConfigurer
+	) throws Exception {
 		LOGGER.info("Loading ADOauth2 - Endpoint authorization configuration");
 //		mvc.servletPath("/**");
 		http.apply(aadWebApplicationHttpSecurityConfigurer)
@@ -81,6 +86,7 @@ public class AzureSecurityConfig {
 	}
 
 	@Bean
+	@Primary
 	public AuthUserDetailsService authUserDetailsService(DataSource dataSource, PasswordEncoder passwordEncoder) {
 		return new AzureUserDetailServiceImpl(new AuthUserDetailServiceImpl(dataSource, passwordEncoder));
 	}
