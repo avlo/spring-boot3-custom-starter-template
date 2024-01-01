@@ -32,9 +32,9 @@ import javax.sql.DataSource;
 @EnableMethodSecurity
 @ConditionalOnClass(AadWebApplicationHttpSecurityConfigurer.class)
 @Import({
-		DataSourceAutoConfiguration.class,
-		HibernateJpaAutoConfiguration.class,
-		DataSourceTransactionManagerAutoConfiguration.class })
+	DataSourceAutoConfiguration.class,
+	HibernateJpaAutoConfiguration.class,
+	DataSourceTransactionManagerAutoConfiguration.class })
 @AutoConfigureBefore({JpaSecurityConfig.class, SecurityCoreConfig.class})
 @EntityScan(basePackages = "edu.mayo.lpea.cad.cadence3.azure.entity")
 public class AzureSecurityConfig {
@@ -55,34 +55,34 @@ public class AzureSecurityConfig {
 	@Bean
 	@DependsOn("mvc")
 	public SecurityFilterChain filterChain(
-			HttpSecurity http,
-			MvcRequestMatcher.Builder mvc,
-			AzureUserLocalAuthorities azureUserLocalAuthorities,
-			AzureAuthUserServiceImpl azureAuthUserServiceImpl,
-			AadWebApplicationHttpSecurityConfigurer aadWebApplicationHttpSecurityConfigurer
+		HttpSecurity http,
+		MvcRequestMatcher.Builder mvc,
+		AzureUserLocalAuthorities azureUserLocalAuthorities,
+		AzureAuthUserServiceImpl azureAuthUserServiceImpl,
+		AadWebApplicationHttpSecurityConfigurer aadWebApplicationHttpSecurityConfigurer
 	) throws Exception {
 		LOGGER.info("Loading ADOauth2 - Endpoint authorization configuration");
 //		mvc.servletPath("/**");
 		http.apply(aadWebApplicationHttpSecurityConfigurer)
-				.and()
-				.authorizeHttpRequests(authorize -> authorize
-						                                    .requestMatchers(mvc.pattern("/css/**")).permitAll()
-						                                    .requestMatchers(mvc.pattern("/images/**")).permitAll()
-						                                    .requestMatchers(mvc.pattern("/login")).permitAll()
-						                                    .requestMatchers(mvc.pattern("/login/oauth2/code/aad/")).permitAll()
-						                                    .requestMatchers(mvc.pattern("/aad")).permitAll()
-						                                    .requestMatchers(mvc.pattern("/**")).permitAll()
+			.and()
+			.authorizeHttpRequests(authorize -> authorize
+					.requestMatchers(mvc.pattern("/css/**")).permitAll()
+					.requestMatchers(mvc.pattern("/images/**")).permitAll()
+					.requestMatchers(mvc.pattern("/login")).permitAll()
+					.requestMatchers(mvc.pattern("/login/oauth2/code/aad/")).permitAll()
+					.requestMatchers(mvc.pattern("/aad")).permitAll()
+					.requestMatchers(mvc.pattern("/**")).permitAll()
 //						.access(azureUserLocalAuthorities)
-				)
-				.oauth2Login(oauth2 -> oauth2
-						                       .userInfoEndpoint(userinfo -> userinfo
-								                                                     .oidcUserService(azureAuthUserServiceImpl))
-						                       .defaultSuccessUrl("/users")
-						                       .permitAll()
-				)
-				.logout(logout -> logout
-						                  .logoutRequestMatcher(mvc.pattern("/logout")).permitAll()
-				);
+			)
+			.oauth2Login(oauth2 -> oauth2
+				.userInfoEndpoint(userinfo -> userinfo
+					.oidcUserService(azureAuthUserServiceImpl))
+				.defaultSuccessUrl("/users")
+				.permitAll()
+			)
+			.logout(logout -> logout
+				.logoutRequestMatcher(mvc.pattern("/logout")).permitAll()
+			);
 		return http.build();
 	}
 

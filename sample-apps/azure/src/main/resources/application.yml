@@ -1,47 +1,18 @@
-#environmentlabel: Azure
 spring:
-#  security:
-#    oauth2:
-#      client:
-#        registration:
-#          aad:
-#            scope:
-#              - openid
-#              - email
-#          ##   Microarray Workbench - Dev
-##          client-id: 40debe9d-50bf-4a5a-9ef5-540192055fef
-##          client-secret: lDq8Q~nvfPaDPfxGlquwW_qitprehZN.lBzlkae
-#  ##   CAD-MaWB_DEV-client-nick
-#  #          client-id: c6b45827-3d7c-41eb-81b2-4fd839fcd7dd
-#  #          client-secret: 68c73b4d-0d81-4ff6-b8fe-6b1ee00d0230
-#  ##   nick azure
-#            client-id: 723ddd72-e7a1-49e9-a391-34b3c99bd9c9
-#            client-secret: ccbc4e35-75fe-4a72-94d8-7573a72154f4
   thymeleaf:
     cache: false
   cloud:
     azure:
       active-directory:
-#        user-group:
-#          allowed-group-names: nick-testgroup-001
-#        redirect-uri-template: http://localhost:8080/login/oauth2/code/aad/
         enabled: true
         profile:
-#          tenant-id: a25fff9c-3f63-4fb2-9a8a-d9bdd0321f9a
-          tenant-id: 2b4650f6-af99-4c27-b1a9-80be06bef404
+          tenant-id: <TENANT_ID>
 #          environment:
 #            active-directory-endpoint:
 #            microsoft-graph-endpoint:
         credential:
-##   Microarray Workbench - Dev
-#          client-id: 40debe9d-50bf-4a5a-9ef5-540192055fef
-#          client-secret: lDq8Q~nvfPaDPfxGlquwW_qitprehZN.lBzlkae
-##   CAD-MaWB_DEV-client-nick
-#          client-id: c6b45827-3d7c-41eb-81b2-4fd839fcd7dd
-#          client-secret: 68c73b4d-0d81-4ff6-b8fe-6b1ee00d0230
-##   nick azure
-          client-id: 723ddd72-e7a1-49e9-a391-34b3c99bd9c9
-          client-secret: ThE8Q~hYRnCdfoTIGAPMzFYCbF5_Nf3RJUNDSa9w
+          client-id: <CLIENT_ID>
+          client-secret: <CLIENT_SECRET_VALUE, not CLIENT-SECRET>
         authorization-clients:
           aad:
 #            authorization-grant-type: client_credentials

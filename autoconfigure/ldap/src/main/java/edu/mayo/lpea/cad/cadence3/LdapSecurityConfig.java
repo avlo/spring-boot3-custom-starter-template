@@ -40,17 +40,17 @@ public class LdapSecurityConfig {
   public SecurityFilterChain filterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
     LOGGER.info("Loading LDAP - Endpoint authorization configuration");
     http.authorizeHttpRequests(authorize -> authorize
-                                                .requestMatchers(mvc.pattern("/css/**")).permitAll()
-                                                .requestMatchers(mvc.pattern("/images/**")).permitAll()
-                                                .requestMatchers(mvc.pattern("/users/**")).hasRole("USER")
-                                                .anyRequest().authenticated() // anyRequest() defines a rule chain for any request which did not match the previous rules
+       .requestMatchers(mvc.pattern("/css/**")).permitAll()
+       .requestMatchers(mvc.pattern("/images/**")).permitAll()
+       .requestMatchers(mvc.pattern("/users/**")).hasRole("USER")
+       .anyRequest().authenticated() // anyRequest() defines a rule chain for any request which did not match the previous rules
     ).formLogin(form -> form
-                            .loginPage("/login")
-                            .loginProcessingUrl("/loginuser")
-                            .defaultSuccessUrl("/users")
-                            .permitAll()
+       .loginPage("/login")
+       .loginProcessingUrl("/loginuser")
+       .defaultSuccessUrl("/users")
+       .permitAll()
     ).logout(logout -> logout
-                           .logoutRequestMatcher(mvc.pattern("/logout")).permitAll()
+       .logoutRequestMatcher(mvc.pattern("/logout")).permitAll()
     );
     return http.build();
   }
